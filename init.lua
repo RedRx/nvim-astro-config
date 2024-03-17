@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 return {
-  -- colorscheme = "catppuccin-mocha",
+  colorscheme = "catppuccin-mocha",
   lsp = {
     formatting = {
       format_on_save = {
@@ -124,16 +124,20 @@ return {
     GitDelete = "",
   },
   heirline = {
-    -- { left = "", right = "" },
-    separators = {
+    separators = { -- oval
       left = { "", "" },
-      -- left = { "", " " },
-      -- left = { "", " " },
       right = { "", "" },
       tab = { "", "" },
     },
+    -- separators = { -- default
+    --   left = { "", " " }, -- separator for the left side of the statusline
+    --   right = { " ", "" }, -- separator for the right side of the statusline
+    --   tab = { "", "" },
+    -- },
+    -- add new colors that can be used by heirline
     colors = function(hl)
       local get_hlgroup = require("astronvim.utils").get_hlgroup
+      -- use helper function to get highlight group properties
       local comment_fg = get_hlgroup("Comment").fg
       hl.git_branch_fg = comment_fg
       hl.git_added = comment_fg
@@ -146,7 +150,13 @@ return {
       hl.folder_icon_bg = get_hlgroup("Error").fg
       return hl
     end,
-    attributes = { mode = { bold = true } },
-    icon_highlights = { icons = { statusline = true } },
+    attributes = {
+      mode = { bold = true },
+    },
+    icon_highlights = {
+      file_icon = {
+        statusline = false,
+      },
+    },
   },
 }
