@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 return {
-  colorscheme = "catppuccin-mocha",
+  -- colorscheme = "catppuccin-mocha",
   lsp = {
     formatting = {
       format_on_save = {
